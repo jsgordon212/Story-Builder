@@ -36,12 +36,14 @@ ActiveRecord::Schema.define(version: 20160726235727) do
   create_table "characters", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "description"
+    t.integer  "project_id",  null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["project_id"], name: "index_characters_on_project_id", using: :btree
   end
 
   create_table "plot_points", force: :cascade do |t|
-    t.string   "type_of",     null: false
+    t.boolean  "main_plot",   null: false
     t.integer  "chapter_id"
     t.text     "description"
     t.datetime "created_at",  null: false
