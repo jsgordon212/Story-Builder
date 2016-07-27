@@ -7,12 +7,12 @@
     <div id="content">
       <p><%= @project.summary %></p>
     </div>
-  <% @project.characters.each do |character| %>
-    <p><%= character.name %></p>
-  <% end %>
   <% @project.chapters.each do |chapter| %>
-    <p>Chapter <%= link_to chapter.chapter_number, chapter_path(chapter) %></p>
-    <p><%= chapter.chapter_title %></p>
+    <p>Chapter: <%= link_to chapter.chapter_number, chapter_path(chapter) %> | <%= chapter.chapter_title %></p>
+    <p>Characters</p>
+    <% chapter.characters.each do |character| %>
+      <p><%= character.name %> | <%= character.description %></p>
+    <% end %>
   <% end %>
 
     <% if @current_user==@project.user %>

@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'characters/index'
+
+  get 'characters/new'
+
+  get 'characters/show'
+
+  get 'characters/edit'
+
+  get 'characters/create'
+
+  get 'characters/update'
+
+  get 'characters/destroy'
+
   root 'application#index'
 
   get 'login', to: 'sessions#new'
