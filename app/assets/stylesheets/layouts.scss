@@ -3,7 +3,6 @@
   background-size: cover !important;
   background-position: center;
   background-attachment: fixed;
-  // margin-top: -60px;
   margin-bottom: 0px;
   height: 100vh;
 }
@@ -14,15 +13,7 @@
 
 
 .custom-jumbotron-inner-container {
-  // padding: 15% 3% 48%;
-  // margin-bottom: 15%;
-  // text-align: center;
-  // // margin-top:0%;
-  // border: solid black;
-  // width: 65%;
-  // height: 10%;
-  // border: solid;
-  background-color: rgba(182,16,5,0.5);
+  background-color: rgba(182,16,5,0.6);
   color: white;
   margin: auto;
   width: 50%;
@@ -30,6 +21,7 @@
   padding-bottom: 3%;
   margin-top: 125px;
   text-align: center;
+  border: white solid 3px;
 }
 
 // .custom-jumbotron-inner-container h1 {
