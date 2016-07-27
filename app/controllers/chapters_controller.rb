@@ -36,7 +36,7 @@ class ChaptersController < ApplicationController
 	def new
 		# binding.pry
 		@project = Project.find_by(id: params["format"].to_i)
-		if @project.user = @current_user
+		if @project.user == @current_user
 			@chapter = Chapter.new
 		else
 			redirect_to root_url
@@ -51,7 +51,7 @@ class ChaptersController < ApplicationController
 		if @chapter.save
 			flash[:success] = "Created a new chapter"
 
-			redirect_to project # check
+			redirect_to @chapter # check
 		else
 			@errors = @chapter.errors.full_messages
 			render 'new'

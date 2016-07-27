@@ -2,6 +2,7 @@
 <p>Title: <%= @chapter.chapter_title %></p>
 <% if @current_user==@chapter.project.user %>
 	<nav id='chapter_id'>
+		<%= link_to 'Add Plot Point', new_plot_point_path(@chapter)%> |
 		<%= link_to 'Edit', edit_chapter_path(@chapter) %> |
 		<%= link_to 'Delete ', @chapter,
 	        method: :delete,
