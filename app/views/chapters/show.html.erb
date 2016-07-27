@@ -1,48 +1,34 @@
-<p>Number: <%= @chapter.chapter_number %></p>
-<p>Title: <%= @chapter.chapter_title %></p>
-<div id="chapter-plot-points">
-	<h3>Plot Points</h3>
-	<div id="chapter-main-plots">
-		<h4>Main Plots</h4>
-	  <% if @main_plots %>
-		<ul>
-			<% @main_plots.each do |main_plot| %>
-				<li><%= main_plot.description %></li>
-			<% end %>
-		</ul>
-	  <% end %>
-	</div>
-	<div id="chapter-sub-plots">
-		<h4>Sub Plots</h4>
-		<% if @sub_plots %>
-		<ul>
-			<% @sub_plots.each do |sub_plot| %>
-				<li><%= sub_plot.description %></li>
-			<% end %>
-		</ul>
-	  <% end %>
-	</div>
+<div class= "container">
+	<nav class="navbar navbar-default" id="chapters-nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/projects/<%=@chapter.project.id%>"><%= @chapter.project.title %></a>
+    </div>
+    <ul class="nav navbar-nav">
+    	<% @chapter.project.chapters.each do |chapter| %>
+      	<li><a href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
+      	<% end %>
+    		<li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@chapter.project) %></li>
+    </ul>
+  </div>
+</nav>
+  <div id="show-content" class= "col-md-12">
+    <% if @chapter %>
+    <h1 class="title"><%= @chapter.chapter_number %>. <%= @chapter.chapter_title %></h1>
+      <div class="container-fluid row">
+          <div class="col-md-3">
+            <div class="panel panel-default panel-body categories">
+              <h3 class = "#Characters"><a class = "sort-button developers" href= "#">    Characters</a></h3>
+              <h3 class ="#Plot Lines"><a class = "sort-button" href= "#">Plot Lines</a></h3>
+            </div>
+        </div>
+
+          <div id = "chapter-summary" class= "col-md-8">
+            <div id="chapter-summary" class="panel panel-default">
+              <div class="panel-body"><h4><%= @chapter.summary %></h4></div>
+            </div>
+          </div>
+    <% end %>
+
+  </div>
 </div>
-<div id="chapter-characters">
-	<h3>Characters</h3>
-      <% if @chapter.characters %>
-        <ul>
-          <% @chapter.characters.each do |character| %>
-            <li><%= character.name %> | <%= character.description %></li>
-          <% end %>
-        </ul>
-      <% end %>
-</div>
-<div id="chapter-summary">
-	<h3>Summary</h3>
-	<%= @chapter.summary %>
-</div>
-<% if @current_user==@chapter.project.user %>
-	<nav id='chapter_id'>
-		<%= link_to 'Edit', edit_chapter_path(@chapter) %> |
-		<%= link_to 'Delete ', @chapter,
-	        method: :delete,
-	        data: { confirm: 'Are you sure?' } %> |
-	    <%= link_to 'Back', project_path(@chapter.project) %>
-	</nav>
-<% end %>

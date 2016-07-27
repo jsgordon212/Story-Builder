@@ -4,10 +4,10 @@
     <h1 class="title"><%= @project.title %></h1>
       <div class="container-fluid row">
           <div class="col-md-3">
-            <div class="panel panel-default panel-body" id= "categories">
-              <h3 class ="#Chapters"><a class = "project-sort-button" href= "#">Chapters</a></h3>
-              <h3 class = "#Characters"><a class = "project-sort-button developers" href= "#">    Characters</a></h3>
-              <h3 class ="#Plot Lines"><a class = "project-sort-button" href= "#">Plot Lines</a></h3>
+            <div class="panel panel-default panel-body categories">
+              <h3 class ="#Chapters"><a class = "sort-button" href= "/projects/<%= @project.id%>/chapters">Chapters</a></h3>
+              <h3 class = "#Characters"><a class = "sort-button developers" href= "#">    Characters</a></h3>
+              <h3 class ="#Plot Lines"><a class = "sort-button" href= "#">Plot Lines</a></h3>
             </div>
         </div>
 
@@ -17,5 +17,6 @@
             </div>
           </div>
     <% end %>
+
   </div>
 </div>
