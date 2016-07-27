@@ -11,7 +11,8 @@
     <p><%= character.name %></p>
   <% end %>
   <% @project.chapters.each do |chapter| %>
-    <p><%= chapter.number %></p>
+    <p>Chapter<%= chapter.chapter_number %></p>
+    <p><%= chapter.chapter_title %></p>
   <% end %>
 
     <% if @current_user==@project.user %>
