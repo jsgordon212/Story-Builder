@@ -9,6 +9,10 @@
     </div>
   <% @project.chapters.each do |chapter| %>
     <p>Chapter: <%= link_to chapter.chapter_number, chapter_path(chapter) %> | <%= chapter.chapter_title %></p>
+    <p>Plot Points</p>
+    <% chapter.plot_points.each do |point| %>
+      <p><%= point.description %></p>
+      <% end %>
     <p>Characters</p>
     <% chapter.characters.each do |character| %>
       <p><%= character.name %> | <%= character.description %></p>
