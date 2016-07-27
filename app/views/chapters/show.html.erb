@@ -1,2 +1,10 @@
-Number: <%= @chapter.chapter_number %>
-Title: <%= @chapter.chapter_title %>
+<p>Number: <%= @chapter.chapter_number %></p>
+<p>Title: <%= @chapter.chapter_title %></p>
+<% if @current_user==@chapter.project.user %>
+	<nav id='chapter_id'>
+		<%= link_to 'Delete ', @chapter,
+	        method: :delete,
+	        data: { confirm: 'Are you sure?' } %> |
+	    <%= link_to 'Back', project_path(@chapter.project) %>
+	</nav>
+<% end %>

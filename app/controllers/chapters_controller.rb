@@ -29,11 +29,25 @@ class ChaptersController < ApplicationController
 		if @chapter.save
 			flash[:success] = "Created a new chapter"
 
-			redirect_to root_url # check
+			redirect_to project # check
 		else
 			@errors = @chapter.errors.full_messages
 			render 'new'
 		end
+	end
+
+	def destroy
+		@chapter = Chapter.find_by_id params[:id]
+
+		@project = @chapter.project
+
+		if @chapter.project.user == @current_user
+			@chapter.destroy
+			redirect_to @project
+		else
+			redirect_to '/'
+		end
+
 	end
 
 	private
