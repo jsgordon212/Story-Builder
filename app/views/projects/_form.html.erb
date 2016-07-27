@@ -1,19 +1,5 @@
 <%= form_for @project do |f| %>
-
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@project.errors.count, "error") %> prohibited
-        this project from being created:
-      </h2>
-      <ul>
-        <% @project.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render partial: 'shared/error_messages', locals: { object: @project } %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -23,8 +9,6 @@
     <%= f.text_area :summary, cols: "50", rows: "10" %>
   </p>
     <%= hidden_field(:project, :user_id) %>
-
-
   <p>
     <%= f.submit %>
   </p>
