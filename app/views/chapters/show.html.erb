@@ -23,7 +23,7 @@
 	  <% end %>
 	</div>
 </div>
-<div id="character-plot-points">
+<div id="chapter-characters">
 	<h3>Characters</h3>
       <% if @chapter.characters %>
         <ul>
@@ -32,6 +32,10 @@
           <% end %>
         </ul>
       <% end %>
+</div>
+<div id="chapter-summary">
+	<h3>Summary</h3>
+	<%= @chapter.summary %>
 </div>
 <% if @current_user==@chapter.project.user %>
 	<nav id='chapter_id'>
