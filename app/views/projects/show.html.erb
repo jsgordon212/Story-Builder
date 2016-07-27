@@ -21,9 +21,10 @@
 
     <% if @current_user==@project.user %>
         <nav id='post_options'>
+          <%= link_to 'Add Chapter', new_project_chapter_path(@project) %> |
+          <%= link_to 'Create character', new_character_path(:project => @project.id) %> |
+          <%= link_to 'Create plot points', new_plot_point_path(:project => @project.id) %>
           <%= link_to 'Edit', edit_project_path(@project) %> |
-          <%= link_to 'Add Chapter', new_chapter_path(:project => @project.id) %> |
-
           <%= link_to 'Delete ', @project,
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>

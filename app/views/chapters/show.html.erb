@@ -2,9 +2,7 @@
 <p>Title: <%= @chapter.chapter_title %></p>
 <% if @current_user==@chapter.project.user %>
 	<nav id='chapter_id'>
-		<%= link_to 'Add Plot Point', new_plot_point_path()%> |
 		<%= link_to 'Edit', edit_chapter_path(@chapter) %> |
-		<%= link_to 'Add Character', new_character_path(@chapter, @chapter.project) %> |
 		<%= link_to 'Delete ', @chapter,
 	        method: :delete,
 	        data: { confirm: 'Are you sure?' } %> |

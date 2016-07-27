@@ -3,8 +3,8 @@ class CharactersController < ApplicationController
   end
 
   def new
-    @chapter = Chapter.find_by(id: params['format'].to_i)
-    if @chapter.project.user == @current_user
+    @project = Project.find_by(id: params[:project])
+    if @project.user == @current_user
       @character = Character.new
     else
       redirect_to root_path
@@ -18,14 +18,12 @@ class CharactersController < ApplicationController
   end
 
   def create
+    # binding.pry
     @character = Character.new(character_params)
-    project = Project.find(params[:project_id].to_i)
-    project.characters << @character
-    chapter = Chapter.find(params[:chapter_id].to_i)
-    chapter.characters << @character
+
     if @character.save
       flash[:success] = "Created a new character"
-      redirect_to chapter.project
+      redirect_to @character.project
     else
       @errors = @character.errors.full_messages
       render 'new'
@@ -41,6 +39,6 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name, :description)
+    params.require(:character).permit(:name, :description, :project_id)
   end
 end

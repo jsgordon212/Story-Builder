@@ -1,8 +1,8 @@
 class PlotPointsController < ApplicationController
 	def new
-		@chapter = Chapter.find_by_id params["format"].to_i
+		@project = Project.find_by_id params[:project]
 
-		if @chapter.project.user = @current_user
+		if @project.user = @current_user
 			@plot_point = PlotPoint.new
 		else
 			redirect_to @chapter
@@ -10,24 +10,26 @@ class PlotPointsController < ApplicationController
 	end
 
 	def create
+		# binding.pry
 
-		@chapter = Chapter.find_by_id params["chapter_id"]
+		@project = Project.find_by_id plot_points_params[:project_id]
 
-		if @chapter.project.user == @current_user
+		@plot_point = PlotPoint.new(plot_points_params)
+
 			if params[:plot_point][:main_plot] == "0"
 				params[:plot_point][:main_plot] == false
 			else
 				params[:plot_point][:main_plot] == true
 			end
-			@plot_point = @chapter.plot_points.build(plot_points_params)
-
+			# @plot_point = @project.plot_points.build(plot_points_params)
+		if @project.user == @current_user
 			if @plot_point.save
-				redirect_to @chapter.project
+				redirect_to @plot_point.project
 			else
 				render 'new'
 			end
 		else
-			redirect_to @chapter.project
+			redirect_to @plot_point.project
 		end
 
 
@@ -36,6 +38,6 @@ class PlotPointsController < ApplicationController
 	private
 
 	def plot_points_params
-		params.require(:plot_point).permit(:main_plot, :description, :chapter)
+		params.require(:plot_point).permit(:main_plot, :description, :project_id)
 	end
 end

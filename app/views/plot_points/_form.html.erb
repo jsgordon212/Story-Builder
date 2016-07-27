@@ -10,7 +10,7 @@
   	<%= f.label :text %>
   	<%= f.text_area :description %>
   </p>
-  <%= hidden_field_tag('chapter_id', @chapter.id) %>
+  <%= f.hidden_field :project_id, :value => @project.id %>
 
   <p>
   	<%= f.submit "Submit" %>

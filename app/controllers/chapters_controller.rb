@@ -34,7 +34,7 @@ class ChaptersController < ApplicationController
 	end
 
 	def new
-		@project = Project.find_by(id: params[:project])
+		@project = Project.find_by(id: params[:project_id])
 		if @project.user == @current_user
 			@chapter = Chapter.new
 		else
