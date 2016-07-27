@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    if @project.user == current_user
+    if @project.user == @current_user
       render 'edit'
     else
       redirect_to '/'
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(post_params)
-    @project.user_id = current_user.id if current_user
+    @project.user_id = @current_user.id if @current_user
 
     if @project.save
       redirect_to @project
@@ -42,9 +42,9 @@ end
 
 def destroy
   @project = Project.find_by_id params[:id]
-  if @project.user == current_user
+  if @project.user == @current_user
     @project.destroy
-    redirect_to current_user
+    redirect_to @current_user
   else
     redirect_to '/'
   end

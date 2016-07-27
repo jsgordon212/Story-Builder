@@ -10,8 +10,11 @@
   <% @project.characters.each do |character| %>
     <<p><%= character.name %></p>
   <% end %>
+  <% @project.chapter.each do |chapter| %>
+    <p><%= character.number %></p>
+  <% end %>
 
-    <% if current_user==@project.user %>
+    <% if @current_user==@project.user %>
         <nav id='post_options'>
           <%= link_to 'Edit', edit_project_path(@project) %> |
           <%= link_to 'Add Chapter', new_chapter_path(@project) %> |
