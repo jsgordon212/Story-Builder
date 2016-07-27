@@ -9,14 +9,27 @@
   </head>
 
   <body>
-    <%= link_to "Home", root_path%>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Story Builder</a></div>
+      <ul class="nav navbar-nav navbar-right">
     <% if logged_in? %>
-    <%= link_to "Profile", user_path(@current_user) %>
-    <%= link_to "Logout", logout_path %>
+    <li><%= link_to "Profile", user_path(@current_user) %></li>
+    <li><%= link_to "Logout", logout_path %></li>
     <% else %>
-    <%= link_to "Register", new_user_path %>
-    <%= link_to "Login", login_path %>
-    <% end %>
+    <li><%= link_to "Register", new_user_path %></li>
+    <li><%= link_to "Login", login_path %></li>
+    <% end %></ul>
+  </div>
+</nav>
     <%= yield %>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li id="copyright">&copy; 2016 Katherine Broner, Elizabeth Fitzpatrick, Jared Gordon</li>
+      </ul>
+    </div>
+  </nav>
   </body>
 </html>
