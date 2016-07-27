@@ -14,8 +14,11 @@
     <%= f.text_field :description %>
   </p>
 
-    <%= hidden_field_tag('chapter_id', @chapter.id) %>
-    <%= hidden_field_tag('project_id', @chapter.project.id) %>
+  <p>
+    <!-- dropdown -->
+  </p>
+
+    <%= f.hidden_field :project_id, :value => @project.id %>
   <p>
     <%= f.submit "Submit" %>
   </p>

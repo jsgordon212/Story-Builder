@@ -34,19 +34,23 @@ ActiveRecord::Schema.define(version: 20160726235727) do
   end
 
   create_table "characters", force: :cascade do |t|
+    t.integer  "project_id"
     t.string   "name",        null: false
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["project_id"], name: "index_characters_on_project_id", using: :btree
   end
 
   create_table "plot_points", force: :cascade do |t|
-    t.string   "type_of",     null: false
+    t.boolean  "main_plot",   null: false
     t.integer  "chapter_id"
+    t.integer  "project_id"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["chapter_id"], name: "index_plot_points_on_chapter_id", using: :btree
+    t.index ["project_id"], name: "index_plot_points_on_project_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -70,6 +74,8 @@ ActiveRecord::Schema.define(version: 20160726235727) do
   add_foreign_key "chapter_characters", "chapters"
   add_foreign_key "chapter_characters", "characters"
   add_foreign_key "chapters", "projects"
+  add_foreign_key "characters", "projects"
   add_foreign_key "plot_points", "chapters"
+  add_foreign_key "plot_points", "projects"
   add_foreign_key "projects", "users"
 end
