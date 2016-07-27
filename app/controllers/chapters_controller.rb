@@ -6,6 +6,10 @@ class ChaptersController < ApplicationController
 	def show
 		@chapter = Chapter.find(params[:id])
 
+		@main_plots = @chapter.plot_points.where(main_plot: true)
+
+		@sub_plots = @chapter.plot_points.where(main_plot: false)
+
 		if @chapter == nil
 			redirect_to root_url
 		end

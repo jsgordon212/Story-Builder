@@ -1,5 +1,38 @@
 <p>Number: <%= @chapter.chapter_number %></p>
 <p>Title: <%= @chapter.chapter_title %></p>
+<div id="chapter-plot-points">
+	<h3>Plot Points</h3>
+	<div id="chapter-main-plots">
+		<h4>Main Plots</h4>
+	  <% if @main_plots %>
+		<ul>
+			<% @main_plots.each do |main_plot| %>
+				<li><%= main_plot.description %></li>
+			<% end %>
+		</ul>
+	  <% end %>
+	</div>
+	<div id="chapter-sub-plots">
+		<h4>Sub Plots</h4>
+		<% if @sub_plots %>
+		<ul>
+			<% @sub_plots.each do |sub_plot| %>
+				<li><%= sub_plot.description %></li>
+			<% end %>
+		</ul>
+	  <% end %>
+	</div>
+</div>
+<div id="character-plot-points">
+	<h3>Characters</h3>
+      <% if @chapter.characters %>
+        <ul>
+          <% @chapter.characters.each do |character| %>
+            <li><%= character.name %> | <%= character.description %></li>
+          <% end %>
+        </ul>
+      <% end %>
+</div>
 <% if @current_user==@chapter.project.user %>
 	<nav id='chapter_id'>
 		<%= link_to 'Edit', edit_chapter_path(@chapter) %> |

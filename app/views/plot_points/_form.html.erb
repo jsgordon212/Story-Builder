@@ -1,6 +1,6 @@
 <%= render partial: 'shared/error_messages', locals: { object: @plot_point } %>
 
-<%= form_for (@plot_point) do |f| %>
+<%= form_for @plot_point, :html => {:class => 'chapter-form'} do |f| %>
   <p>
   	<%= f.label :main_plot %>
   	<%= f.check_box :main_plot %>
@@ -10,8 +10,12 @@
   	<%= f.label :text %>
   	<%= f.text_area :description %>
   </p>
-  <%= f.hidden_field :project_id, :value => @project.id %>
+  <p>
+    <%= f.label :chapter %><br>
+    <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]})%>
+  </p>
 
+    <%= f.hidden_field :project_id, :value => @project.id %>
   <p>
   	<%= f.submit "Submit" %>
   </p>

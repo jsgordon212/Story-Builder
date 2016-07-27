@@ -1,8 +1,10 @@
 class CharactersController < ApplicationController
   def index
+    @characters = Character.where(project_id: params[:project_id])
   end
 
   def new
+
     @project = Project.find_by(id: params[:project])
     if @project.user == @current_user
       @character = Character.new
@@ -18,7 +20,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    # binding.pry
+
     @character = Character.new(character_params)
 
     if @character.save
@@ -39,6 +41,6 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name, :description, :project_id)
+    params.require(:character).permit(:name, :description, :chapter_id, :project_id)
   end
 end
