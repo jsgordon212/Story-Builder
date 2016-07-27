@@ -1,5 +1,23 @@
 <p>Number: <%= @chapter.chapter_number %></p>
 <p>Title: <%= @chapter.chapter_title %></p>
+<div id="chapter-plot-points">
+	<h3>Plot Points</h3>
+	<% if @chapter.plot_points%>
+		<ul>
+			<% @chapter.plot_points.each do |plot_point| %>
+				<li><%= plot_point.description %> | Main plot: <%= plot_point.main_plot %> </li>
+			<% end %>
+		</ul>
+	<% end %>
+	<h3>Characters</h3>
+	<% if @chapter.characters %>
+		<ul>
+			<% @chapter.characters.each do |character| %>
+				<li><%= character.name %> | <%= character.description %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
 <% if @current_user==@chapter.project.user %>
 	<nav id='chapter_id'>
 		<%= link_to 'Edit', edit_chapter_path(@chapter) %> |

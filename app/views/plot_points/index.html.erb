@@ -1,21 +1,27 @@
-<h3> Main Plots</h3>
-  <% if @main_plots %>
-	<ul><% @main_plots.each do |plot| %>
-		<li><%= plot.description %></li>
-		<ul>
-			<% if plot.chapter %>
-			  <li><%= link_to plot.chapter.chapter_number, chapter_route(plot.chapter) %></li>
-			<% end %>
-		</ul>
-	<% end %></ul>
-  <% end %>
+<div id="project-plots">
+  <div id="main-plots-container">
+    <h3> Main Plots</h3>
+      <% if @main_plots %>
+    	<ul><% @main_plots.each do |plot| %>
+    		<li><%= plot.description %></li>
+    		<ul>
+    			<% if plot.chapter %>
+    			  <li><%= link_to plot.chapter.chapter_number, chapter_route(plot.chapter) %></li>
+    			<% end %>
+    		</ul>
+    	<% end %></ul>
+      <% end %>
+  </div>
 
-<h3>Sub plots</h3>
-  <% if @subplots %>
-  	<ul><% @subplots.each do |plot| %>
-  		<li><%= plot.description %></li>
-  		<% if plot.chapter %>
-  		  <li><%= link_to plot.chapter.chapter_number, chapter_route(plot.chapter) %></li>
-  		<% end %>
-  	<% end %></ul>
-  <% end %>
+  <div id="sub-plots-container">
+    <h3>Sub plots</h3>
+      <% if @subplots %>
+      	<ul><% @subplots.each do |plot| %>
+      		<li><%= plot.description %></li>
+      		<% if plot.chapter %>
+      		  <li><%= link_to plot.chapter.chapter_number, chapter_route(plot.chapter) %></li>
+      		<% end %>
+      	<% end %></ul>
+      <% end %>
+  </div>
+</div>
