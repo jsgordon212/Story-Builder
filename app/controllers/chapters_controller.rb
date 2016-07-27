@@ -51,7 +51,7 @@ class ChaptersController < ApplicationController
 		if @chapter.save
 			flash[:success] = "Created a new chapter"
 
-			redirect_to project # check
+			redirect_to @chapter # check
 		else
 			@errors = @chapter.errors.full_messages
 			render 'new'
