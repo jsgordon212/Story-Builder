@@ -8,10 +8,10 @@
       <p><%= @project.summary %></p>
     </div>
   <% @project.characters.each do |character| %>
-    <<p><%= character.name %></p>
+    <p><%= character.name %></p>
   <% end %>
-  <% @project.chapter.each do |chapter| %>
-    <p><%= character.number %></p>
+  <% @project.chapters.each do |chapter| %>
+    <p><%= chapter.number %></p>
   <% end %>
 
     <% if @current_user==@project.user %>
@@ -19,7 +19,7 @@
           <%= link_to 'Edit', edit_project_path(@project) %> |
           <%= link_to 'Add Chapter', new_chapter_path(@project) %> |
 
-          <%= link_to 'Delete ', @project
+          <%= link_to 'Delete ', @project,
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>
         </nav>
