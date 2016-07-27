@@ -22,7 +22,7 @@
     <% if @current_user==@project.user %>
         <nav id='post_options'>
           <%= link_to 'Edit', edit_project_path(@project) %> |
-          <%= link_to 'Add Chapter', new_chapter_path(@project) %> |
+          <%= link_to 'Add Chapter', new_chapter_path(:project => @project.id) %> |
 
           <%= link_to 'Delete ', @project,
                   method: :delete,
