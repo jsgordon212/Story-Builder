@@ -1,0 +1,26 @@
+<div id="project_show_content" class="skinny_wrapper wrapper_padding">
+  <header>
+  <% if @project %>
+     <h1><%= @project.title %></h1>
+     <hr>
+    </header>
+    <div id="content">
+      <p><%= @project.summary %></p>
+    </div>
+  <% @project.characters.each do |character| %>
+    <<p><%= character.name %></p>
+  <% end %>
+
+    <% if current_user==@project.user %>
+        <nav id='post_options'>
+          <%= link_to 'Edit', edit_project_path(@project) %> |
+          <%= link_to 'Add Chapter', new_chapter_path(@project) %> |
+
+          <%= link_to 'Delete ', @project
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+        </nav>
+    <% end %>
+    <hr>
+  <% end %>
+</div>
