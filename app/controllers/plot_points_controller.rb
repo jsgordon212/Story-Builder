@@ -1,4 +1,13 @@
 class PlotPointsController < ApplicationController
+	def index
+		@project = Project.find_by_id params[:project_id]
+		@plot_points = @project.plot_points
+
+		 @subplots = @plot_points.where(main_plot: false)
+		 @main_plots = @plot_points.where(main_plot: true)
+		# binding.pry
+	end
+
 	def new
 		@project = Project.find_by_id params[:project]
 
