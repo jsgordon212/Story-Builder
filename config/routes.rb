@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
   resources :projects do
-    resources :chapters, only: [:new, :create]
+    resources :chapters, only: [:index, :new, :create]
   end
 
-  resources :chapters, except: [:new, :create]
+  resources :chapters, except: [:index, :new, :create]
   resources :characters
   resources :plot_points
 

@@ -1,6 +1,7 @@
 class ChaptersController < ApplicationController
 	def index
-		@chapters = Chapter.all
+		@project = Project.find_by(id:params[:project_id])
+		@chapters = @project.chapters
 	end
 
 	def show
