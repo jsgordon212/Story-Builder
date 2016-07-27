@@ -1,0 +1,17 @@
+ <% if @current_user==@project.user %>
+        <nav id='post_options'>
+          <%= link_to 'Add Chapter', new_project_chapter_path(@project) %> |
+          <%= link_to 'Create character', new_character_path(:project => @project.id) %> |
+          <%= link_to 'Create plot points', new_plot_point_path(:project => @project.id) %>
+          <%= link_to 'Edit', edit_project_path(@project) %> |
+          <%= link_to 'Delete ', @project,
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+        </nav>
+    <% end %>
+
+      <% @project.chapters.each do |chapter| %>
+        <p>Chapter: <%= link_to chapter.chapter_number, chapter_path(chapter) %> | <%= chapter.chapter_title %></p>
+        <p><%= link_to 'Plot Points', plot_points_path(:project_id => @project.id) %></p>
+        <p><%= link_to 'Characters', characters_path(:project_id => @project.id) %></p>
+      <% end %>

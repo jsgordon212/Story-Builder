@@ -1,29 +1,21 @@
-<div id="project_show_content">
-  <header>
-  <% if @project %>
-     <h1><%= @project.title %></h1>
-     <hr>
-    </header>
-    <div id="content">
-      <p><%= @project.summary %></p>
-    </div>
-  <% @project.chapters.each do |chapter| %>
-    <p>Chapter: <%= link_to chapter.chapter_number, chapter_path(chapter) %> | <%= chapter.chapter_title %></p>
-    <p><%= link_to 'Plot Points', plot_points_path(:project_id => @project.id) %></p>
-    <p><%= link_to 'Characters', characters_path(:project_id => @project.id) %></p>
-  <% end %>
+<div class= "container">
+  <div id="project-show-content" class= "col-md-12">
+    <% if @project %>
+    <h1 class="title"><%= @project.title %></h1>
+      <div class="container-fluid row">
+          <div class="col-md-3">
+            <div class="panel panel-default panel-body" id= "categories">
+              <h3 class ="#Chapters"><a class = "project-sort-button" href= "#">Chapters</a></h3>
+              <h3 class = "#Characters"><a class = "project-sort-button developers" href= "#">    Characters</a></h3>
+              <h3 class ="#Plot Lines"><a class = "project-sort-button" href= "#">Plot Lines</a></h3>
+            </div>
+        </div>
 
-    <% if @current_user==@project.user %>
-        <nav id='post_options'>
-          <%= link_to 'Add Chapter', new_project_chapter_path(@project) %> |
-          <%= link_to 'Create character', new_character_path(:project => @project.id) %> |
-          <%= link_to 'Create plot points', new_plot_point_path(:project => @project.id) %>
-          <%= link_to 'Edit', edit_project_path(@project) %> |
-          <%= link_to 'Delete ', @project,
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-        </nav>
+          <div id = "project-summary" class= "col-md-8">
+            <div id="project-summary" class="panel panel-default">
+              <div class="panel-body"><h4><%= @project.summary %></h4></div>
+            </div>
+          </div>
     <% end %>
-    <hr>
-  <% end %>
+  </div>
 </div>
