@@ -22,12 +22,12 @@ class PlotPointsController < ApplicationController
 			@plot_point = @chapter.plot_points.build(plot_points_params)
 
 			if @plot_point.save
-				redirect_to @chapter
+				redirect_to @chapter.project
 			else
 				render 'new'
 			end
 		else
-			redirect_to @chapter
+			redirect_to @chapter.project
 		end
 
 
