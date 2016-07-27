@@ -6,7 +6,7 @@
     		<li><%= plot.description %></li>
     		<ul>
     			<% if plot.chapter %>
-    			  <li><%= link_to plot.chapter.chapter_number, chapter_route(plot.chapter) %></li>
+    			  <li><%= link_to plot.chapter.chapter_number, chapter_path(plot.chapter) %></li>
     			<% end %>
     		</ul>
     	<% end %></ul>
@@ -19,7 +19,7 @@
       	<ul><% @subplots.each do |plot| %>
       		<li><%= plot.description %></li>
       		<% if plot.chapter %>
-      		  <li><%= link_to plot.chapter.chapter_number, chapter_route(plot.chapter) %></li>
+      		  <li><%= link_to plot.chapter.chapter_number, chapter_path(plot.chapter) %></li>
       		<% end %>
       	<% end %></ul>
       <% end %>
