@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
   def index
+    @characters = Character.where(project_id: params[:project_id])
   end
 
   def new
