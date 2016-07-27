@@ -23,7 +23,7 @@ class ChaptersController < ApplicationController
 
 	def create
 		#possible login redirect, but can you force a post?
-		binding.pry
+		# binding.pry
 		@chapter = Chapter.new(chapter_params) #check
 
 

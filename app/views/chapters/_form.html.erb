@@ -14,7 +14,7 @@
 		<%= f.label :chapter_title %>
 		<%= f.text_field :chapter_title %>
 	</p>
-	  <% hidden_field_tag(@project, @project.id) %>
+	  <%= hidden_field_tag "project_id", @project.id %>
 	<p>
 		<%= f.submit "Submit" %>
 	</p>
