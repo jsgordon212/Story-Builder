@@ -11,6 +11,28 @@ class ChaptersController < ApplicationController
 		end
 	end
 
+	def edit
+		@chapter = Chapter.find(params[:id])
+
+		@project = @chapter.project
+
+		if @chapter.project.user == @current_user
+			render 'edit'
+		else
+			redirect_to @chapter.project
+		end
+	end
+
+	def update
+		@chapter = Chapter.find_by_id params[:id]
+
+		if @chapter.update(chapter_params)
+			redirect_to @chapter.project
+		else
+			render 'edit'
+		end
+	end
+
 	def new
 		# binding.pry
 		@project = Project.find_by(id: params["format"].to_i)

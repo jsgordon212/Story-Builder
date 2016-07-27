@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find_by_id params[:id]
+    
     if @project.user == @current_user
       render 'edit'
     else
