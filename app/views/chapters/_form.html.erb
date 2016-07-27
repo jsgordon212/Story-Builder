@@ -1,0 +1,22 @@
+
+	<%= render partial: 'shared/error_messages', locals: { object: @chapter } %>
+
+
+
+<%= form_for (@chapter) do |f| %>
+
+	<p>
+		<%= f.label :chapter_number %>
+		<%= f.number_field :chapter_number %>
+
+	</p>
+	<p>
+		<%= f.label :chapter_title %>
+		<%= f.text_field :chapter_title %>
+	</p>
+	  <% hidden_field_tag(@project, @project.id) %>
+	<p>
+		<%= f.submit "Submit" %>
+	</p>
+
+<% end %>
