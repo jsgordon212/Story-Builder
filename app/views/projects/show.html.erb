@@ -11,9 +11,6 @@
     <p>Chapter: <%= link_to chapter.chapter_number, chapter_path(chapter) %> | <%= chapter.chapter_title %></p>
     <p><%= link_to 'Plot Points', plot_points_path(:project_id => @project.id) %></p>
     <p><%= link_to 'Characters', characters_path(:project_id => @project.id) %></p>
-    <% chapter.characters.each do |character| %>
-      <p><%= character.name %> | <%= character.description %></p>
-    <% end %>
   <% end %>
 
     <% if @current_user==@project.user %>
