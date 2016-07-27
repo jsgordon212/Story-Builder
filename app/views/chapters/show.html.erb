@@ -5,6 +5,7 @@
 		<%= link_to 'Delete ', @chapter,
 	        method: :delete,
 	        data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Add Character', new_character_path(@chapter, @chapter.project) %> |
 	    <%= link_to 'Back', project_path(@chapter.project) %>
 	</nav>
 <% end %>
