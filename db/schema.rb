@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160726235727) do
     t.integer  "project_id"
     t.integer  "chapter_number", null: false
     t.string   "chapter_title"
+    t.text     "summary"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["project_id"], name: "index_chapters_on_project_id", using: :btree

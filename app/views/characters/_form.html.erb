@@ -1,8 +1,6 @@
   <%= render partial: 'shared/error_messages', locals: { object: @character } %>
 
-
-
-<%= form_for (@character) do |f| %>
+<%= form_for @character, :html => {:class => 'chapter-form'} do |f| %>
 
   <p>
     <%= f.label :name %>
@@ -15,7 +13,8 @@
   </p>
 
   <p>
-    <!-- dropdown -->
+    <%= f.label :chapter_number %><br>
+    <%= f.select("chapters", @project.chapters.map { |chapter| [ chapter.chapter_number, chapter.chapter_number]})%>
   </p>
 
     <%= f.hidden_field :project_id, :value => @project.id %>
