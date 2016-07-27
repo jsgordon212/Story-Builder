@@ -8,10 +8,11 @@
       <p><%= @project.summary %></p>
     </div>
   <% @project.characters.each do |character| %>
-    <<p><%= character.name %></p>
+    <p><%= character.name %></p>
   <% end %>
   <% @project.chapters.each do |chapter| %>
-    <p><%= character.number %></p>
+    <p>Chapter<%= chapter.chapter_number %></p>
+    <p><%= chapter.chapter_title %></p>
   <% end %>
 
     <% if @current_user==@project.user %>
