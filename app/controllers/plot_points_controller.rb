@@ -9,8 +9,8 @@ class PlotPointsController < ApplicationController
 	end
 
 	def new
-		@project = Project.find_by_id params[:project]
 
+		@project = Project.find_by_id params[:project]
 		if @project.user = @current_user
 			@plot_point = PlotPoint.new
 		else
