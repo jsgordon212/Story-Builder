@@ -5,6 +5,7 @@
 
 <%= form_for (@chapter) do |f| %>
 
+
 	<p>
 		<%= f.label :chapter_number %>
 		<%= f.number_field :chapter_number %>
@@ -14,7 +15,8 @@
 		<%= f.label :chapter_title %>
 		<%= f.text_field :chapter_title %>
 	</p>
-	  <%= hidden_field_tag "project_id", @project.id %>
+
+	  <%= hidden_field_tag('project_id', @project.id) %>
 	<p>
 		<%= f.submit "Submit" %>
 	</p>

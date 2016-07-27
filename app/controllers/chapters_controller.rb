@@ -15,7 +15,7 @@ class ChaptersController < ApplicationController
 		# binding.pry
 		if logged_in?
 			@project = Project.find_by(id: params["format"].to_i)
-			@chapter = Chapter.new(project_id: @project.id)
+			@chapter = Chapter.new()
 		else
 			redirect_to root_url
 		end
@@ -23,10 +23,8 @@ class ChaptersController < ApplicationController
 
 	def create
 		#possible login redirect, but can you force a post?
-		# binding.pry
-		@chapter = Chapter.new(chapter_params) #check
-
-
+		project = Project.find(params[:project_id])
+		@chapter = project.chapters.build(chapter_params) #check
 
 		if @chapter.save
 			flash[:success] = "Created a new chapter"
@@ -41,6 +39,6 @@ class ChaptersController < ApplicationController
 	private
 
 	def chapter_params
-		params.require(:chapter).permit(:chapter_number, :chapter_title, :project)
+		params.require(:chapter).permit(:chapter_number, :chapter_title, :project_id)
 	end
 end
