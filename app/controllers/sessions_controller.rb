@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(login_username)
     if @user && @user.authenticate(login_password[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       if @user
         @user.errors[:password].push("incorrect")
