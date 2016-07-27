@@ -11,7 +11,7 @@
     <p><%= character.name %></p>
   <% end %>
   <% @project.chapters.each do |chapter| %>
-    <p>Chapter<%= chapter.chapter_number %></p>
+    <p>Chapter <%= link_to chapter.chapter_number, chapter_path(chapter) %></p>
     <p><%= chapter.chapter_title %></p>
   <% end %>
 
