@@ -10,7 +10,7 @@
   <% @project.characters.each do |character| %>
     <<p><%= character.name %></p>
   <% end %>
-  <% @project.chapter.each do |chapter| %>
+  <% @project.chapters.each do |chapter| %>
     <p><%= character.number %></p>
   <% end %>
 
@@ -19,7 +19,7 @@
           <%= link_to 'Edit', edit_project_path(@project) %> |
           <%= link_to 'Add Chapter', new_chapter_path(@project) %> |
 
-          <%= link_to 'Delete ', @project
+          <%= link_to 'Delete ', @project,
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>
         </nav>

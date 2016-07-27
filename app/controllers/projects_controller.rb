@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(post_params)
+    @project = Project.new(project_params)
     @project.user_id = @current_user.id if @current_user
 
     if @project.save
