@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 20160726235727) do
 
   create_table "characters", force: :cascade do |t|
     t.integer  "project_id"
+    t.integer  "chapter_id"
     t.string   "name",        null: false
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["chapter_id"], name: "index_characters_on_chapter_id", using: :btree
     t.index ["project_id"], name: "index_characters_on_project_id", using: :btree
   end
 
@@ -75,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160726235727) do
   add_foreign_key "chapter_characters", "chapters"
   add_foreign_key "chapter_characters", "characters"
   add_foreign_key "chapters", "projects"
+  add_foreign_key "characters", "chapters"
   add_foreign_key "characters", "projects"
   add_foreign_key "plot_points", "chapters"
   add_foreign_key "plot_points", "projects"

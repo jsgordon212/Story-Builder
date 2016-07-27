@@ -11,8 +11,8 @@
   	<%= f.text_area :description %>
   </p>
   <p>
-    <%= f.label :chapter_number %><br>
-    <%= f.select("chapter", @project.chapters.map { |chapter| [ chapter.chapter_number, chapter.chapter_number]})%>
+    <%= f.label :chapter %><br>
+    <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]})%>
   </p>
 
     <%= f.hidden_field :project_id, :value => @project.id %>
