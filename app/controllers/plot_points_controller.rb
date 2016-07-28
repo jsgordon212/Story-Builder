@@ -6,6 +6,12 @@ class PlotPointsController < ApplicationController
 
 			 @subplots = @plot_points.where(main_plot: false)
 			 @main_plots = @plot_points.where(main_plot: true)
+
+			 if @project.user == current_user
+			 	@creator = true
+			 else
+			 	@creator = false
+			 end
 		else
 			redirect_to root_url
 		end
