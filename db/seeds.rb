@@ -1,58 +1,67 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-users = [User.create(username: "jared", email: "jared@jared.com", password: "Password1"),User.create(username: "katbroner", email: "katbroner@jared.com", password: "Password1"),User.create(username: "samanthavholmes", email: "samanthavholmes@jared.com", password: "Password1"),User.create(username: "efitz", email: "efitz@jared.com", password: "Password1"),User.create(username: "user1234", email: "user1234@gmail.com", password: "Password1"),User.create(username: "usernameusername", email: "auser@gmail.com", password: "Password1"),User.create(username: "jared2", email: "jared2@gmail.com", password: "Password1")]
-
-20.times do
-	Project.create(title: Faker::Hipster.sentence, user: users.sample, summary: Faker::Hipster.paragraph([3..9].sample, true))
-end
-
-60.times do
-	Character.create(project: Project.all.sample, name: Faker::Name.name, description: Faker::Hipster.sentence)
-end
-
-30.times do
-	Chapter.create(project: Project.all.sample, chapter_number: rand(1..63), chapter_title: Faker::Hipster.sentence, summary: Faker::Hipster.paragraph([2..8].sample, true))
-end
-
-100.times do
-	PlotPoint.create(main_plot: [true, false].sample, project: Project.all.sample, description: Faker::Hipster.paragraph([2..8].sample, true))
-end
-
-100.times do
-	Project.all.sample.chapters << Chapter.all.sample
-
-	Project.all.sample.characters << Character.all.sample
-
-	Project.all.sample.plot_points << PlotPoint.all.sample
-
-	Chapter.all.sample.plot_points << PlotPoint.all.sample
-
-	Character.all.sample.chapters << Chapter.all.sample
-end
-# Chapter.all.sample.charaters << Character.all.sample
 
 good_user = User.create(username: "jsgordon212", email: "jsgordon@jared.com", password: "Password1")
 
-good_user_projects = []
+Project.create(title: "The Lost Boy", user: good_user, summary: "A story of a boy who is looking for meaning in life.")
 
-4.times do
-	good_user_projects << Project.create(title: Faker::Hipster.sentence, user: good_user, summary: Faker::Hipster.paragraph([3..9].sample, true))
-end 
+Project.create(title: "The Adventures of Peter Humming", user: good_user, summary: "A businessman tries something new every day.")
 
-16.times do
-	Character.create(project: good_user_projects.sample, name: Faker::Name.name, description: Faker::Hipster.sentence)
-end
+Project.create(title: "Finding Sally", user: good_user, summary: "A man sees his one true love on a subway and seeks out to find her.")
 
-30.times do
-	Chapter.create(project: good_user_projects.sample, chapter_number: rand(1..17), chapter_title: Faker::Hipster.sentence, summary: Faker::Hipster.paragraph([2..8].sample, true))
-end
+Project.create(title: "It's Nice to See You Again", user: good_user, summary: "Twins separated at birth randomly run into each other in New York City 25 years later.")
 
-47.times do
-	PlotPoint.create(main_plot: [true, false].sample, project: good_user_projects.sample, description: Faker::Hipster.paragraph([2..8].sample, true))
-end
+Character.create(project: Project.find_by(title: "It's Nice to See You Again"), name: "Todd Walters", description: "Twin #1, Artist")
+
+Character.create(project: Project.find_by(title: "It's Nice to See You Again"), name: "Brian Walters", description: "Twin #2, Musician")
+
+Character.create(project: Project.find_by(title: "It's Nice to See You Again"), name: "Marie Parker", description: "Brian's girlfriend")
+
+Character.create(project: Project.find_by(title: "It's Nice to See You Again"), name: "Frank Hill", description: "Todd's best friend")
+
+
+PlotPoint.create(main_plot: false, project: Project.find_by(title: "It's Nice to See You Again"), description: "Todd decides to go play football with his bestfriend, Frank, in Central Park.")
+
+PlotPoint.create(main_plot: false, project: Project.find_by(title: "It's Nice to See You Again"), description: "Brian and his girlfriend, Marie, have a picnic in Central Park.")
+
+PlotPoint.create(main_plot: true, project: Project.find_by(title: "It's Nice to See You Again"), description: "Todd's football lands on Brian's blanket.")
+
+PlotPoint.create(main_plot: true, project: Project.find_by(title: "It's Nice to See You Again"), description: "Todd and Brian meet for the first time when Brian passes Todd his football back.")
+
+PlotPoint.create(main_plot: false, project: Project.find_by(title: "It's Nice to See You Again"), description: "Todd and Brian get drinks at Ulysses.")
+
+PlotPoint.create(main_plot: false, project: Project.find_by(title: "It's Nice to See You Again"), description: "Todd invites Brian and Marie to Frank's party.")
+
+PlotPoint.create(main_plot: true, project: Project.find_by(title: "It's Nice to See You Again"), description: "Todd starts flirting with Marie.")
+
+PlotPoint.create(main_plot: true, project: Project.find_by(title: "It's Nice to See You Again"), description: "Brian punches Todd in the face.")
+
+
+Chapter.create(project: Project.find_by(title: "It's Nice to See You Again"), chapter_number: 1, chapter_title: "The Meeting", summary: "Todd and Brian run into each other in Central Park.")
+
+Chapter.find_by(chapter_title: "The Meeting").plot_points << PlotPoint.find_by(description: "Todd decides to go play football with his bestfriend, Frank, in Central Park.")
+Chapter.find_by(chapter_title: "The Meeting").plot_points << PlotPoint.find_by(description: "Brian and his girlfriend, Marie, have a picnic in Central Park.")
+Chapter.find_by(chapter_title: "The Meeting").plot_points << PlotPoint.find_by(description: "Todd's football lands on Brian's blanket.")
+Chapter.find_by(chapter_title: "The Meeting").plot_points << PlotPoint.find_by(description: "Todd and Brian meet for the first time when Brian passes Todd his football back.")
+
+Chapter.create(project: Project.find_by(title: "It's Nice to See You Again"), chapter_number: 2, chapter_title: "The Dinner", summary: "Todd and Brian go for drinks and dinner to catch up on the past 25 years.").plot_points << PlotPoint.find_by(description: "Todd and Brian get drinks at Ulysses.")
+
+Chapter.find_by(chapter_title: "The Dinner").plot_points << PlotPoint.find_by(description: "Todd invites Brian and Marie to Frank's party.")
+
+Chapter.create(project: Project.find_by(title: "It's Nice to See You Again"), chapter_number: 3, chapter_title: "The Party", summary: "A party turns sour when Todd gets a little too close to Brian's girlfriend, Marie.").plot_points << PlotPoint.find_by(description: "Todd starts flirting with Marie.")
+
+Chapter.find_by(chapter_title: "The Party").plot_points << PlotPoint.find_by(description: "Brian punches Todd in the face.")
+
+
+Character.find_by(name: "Todd Walters").chapters << Chapter.find_by(chapter_title: "The Meeting")
+Character.find_by(name: "Todd Walters").chapters << Chapter.find_by(chapter_title: "The Dinner")
+Character.find_by(name: "Todd Walters").chapters << Chapter.find_by(chapter_title: "The Party")
+
+Character.find_by(name: "Brian Walters").chapters << Chapter.find_by(chapter_title: "The Meeting")
+Character.find_by(name: "Brian Walters").chapters << Chapter.find_by(chapter_title: "The Dinner")
+Character.find_by(name: "Brian Walters").chapters << Chapter.find_by(chapter_title: "The Party")
+
+
+Character.find_by(name: "Marie Parker").chapters << Chapter.find_by(chapter_title: "The Meeting")
+Character.find_by(name: "Marie Parker").chapters << Chapter.find_by(chapter_title: "The Party")
+
+Character.find_by(name: "Frank Hill").chapters << Chapter.find_by(chapter_title: "The Meeting")
+Character.find_by(name: "Frank Hill").chapters << Chapter.find_by(chapter_title: "The Party")
