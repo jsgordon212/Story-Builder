@@ -1,0 +1,21 @@
+<div class ="project-show-content">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class='section-title'>Characters</h1>
+    </div>
+  </div>
+
+  <% if characters %>
+    <div class="row col-md-12 objects">
+      <% characters.each do |character| %>
+        <div class="panel panel-default col-md-5 character-panel">
+          <div class="panel-body">
+            <h3><%= character.name %></h3>
+            <h5><%= character.description %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+</div>

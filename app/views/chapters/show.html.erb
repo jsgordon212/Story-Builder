@@ -1,34 +1,16 @@
 <div class= "container">
-	<nav class="navbar navbar-default" id="chapters-nav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/projects/<%=@chapter.project.id%>"><%= @chapter.project.title %></a>
-    </div>
+  <nav class="navbar navbar-default" id="chapters-nav">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/projects/<%=@chapter.project.id%>"><%= @chapter.project.title %></a>
+      </div>
     <ul class="nav navbar-nav">
-    	<% @chapter.project.chapters.each do |chapter| %>
-      	<li><a href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
-      	<% end %>
-    		<li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@chapter.project) %></li>
+      <% @chapter.project.chapters.each do |chapter| %>
+        <li><a id="/chapters/<%=chapter.id%>" class="chapter-button" href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
+        <% end %>
+        <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@chapter.project) %></li>
     </ul>
-  </div>
-</nav>
-  <div id="show-content" class= "col-md-12">
-    <% if @chapter %>
-    <h1 class="title"><%= @chapter.chapter_number %>. <%= @chapter.chapter_title %></h1>
-      <div class="container-fluid row">
-          <div class="col-md-3">
-            <div class="panel panel-default panel-body categories">
-              <h3 class = "#Characters"><a class = "sort-button developers" href= "#">    Characters</a></h3>
-              <h3 class ="#Plot Lines"><a class = "sort-button" href= "#">Plot Lines</a></h3>
-            </div>
-        </div>
+  </nav>
 
-          <div id = "chapter-summary" class= "col-md-8">
-            <div id="chapter-summary" class="panel panel-default">
-              <div class="panel-body"><h4><%= @chapter.summary %></h4></div>
-            </div>
-          </div>
-    <% end %>
-
-  </div>
+<%= render partial: 'chapter', locals: {chapter: @chapter}%>
 </div>

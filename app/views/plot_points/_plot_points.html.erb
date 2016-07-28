@@ -1,31 +1,10 @@
-<div class='container'>
-  <nav class="navbar navbar-default" id="chapters-nav">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/projects/<%=@project.id%>"><%= @project.title %></a>
-      </div>
-    <ul class="nav navbar-nav">
-      <% @project.chapters.each do |chapter| %>
-        <li><a id="/chapters/<%=chapter.id%>" class="chapter-button" href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
-        <% end %>
-        <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project) %></li>
-    </ul>
-  </nav>
-
-
-<h1 class='section-title'>Plot Points</h1>
-      <%= link_to 'Add a Plot Point', new_plot_point_path(project: @project), class: 'btn btn-default btn-large form-buttons'%>
-
-
-
-  <div id="project-plots">
-
+  <div id="project-plots" class="project-show-content">
     <div id="main-plots-container">
       <h3> Main Plots</h3>
 
-      <% if @main_plots %>
+      <% if main_plots %>
         <div class="row col-md-12 objects">
-          <% @main_plots.each do |plot| %>
+          <% main_plots.each do |plot| %>
             <div class="panel panel-default col-md-5 plot-panel">
               <div class="panel-body">
                 <h4><%= plot.description %></h4>
@@ -41,9 +20,9 @@
 
     <div id="sub-plots-container">
       <h3>Sub plots</h3>
-      <% if @subplots %>
+      <% if subplots %>
           <div class="row col-md-12 objects">
-            <% @subplots.each do |plot| %>
+            <% subplots.each do |plot| %>
               <div class="panel panel-default col-md-5 plot-panel">
                 <div class="panel-body">
                   <h4><%= plot.description %></h4>
@@ -57,7 +36,3 @@
         <% end %>
     </div>
   </div>
-
-<%= render partial: 'plot_points', locals: {main_plots: @main_plots, subplots: @subplots} %>
-
-</div>

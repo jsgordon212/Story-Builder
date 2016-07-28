@@ -1,0 +1,19 @@
+  <div class= "col-md-12 show-content chapter">
+    <% if chapter %>
+    <h1 class="title"><%= chapter.chapter_number %>. <%= chapter.chapter_title %></h1>
+      <div class="container-fluid row">
+          <div class="col-md-3">
+            <div class="panel panel-default panel-body categories">
+              <h3><a id= "/chapters/<%=chapter.id%>/characters" class = "sort-button" href= "/chapters/<%=chapter.id%>/characters">Characters</a></h3>
+              <h3><a id="/chapters/<%=chapter.id%>/plot_points" class = "sort-button" href= "/chapters/<%=chapter.id%>/plot_lines">Plot Points</a></h3>
+            </div>
+        </div>
+
+          <div id = "chapter-summary" class= "col-md-8">
+            <div id="chapter-summary" class="project-show-content  panel panel-default">
+              <div class="panel-body"><h4><%= chapter.summary %></h4></div>
+            </div>
+          </div>
+    <% end %>
+
+  </div>

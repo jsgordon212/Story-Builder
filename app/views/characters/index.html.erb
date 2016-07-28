@@ -6,13 +6,11 @@
       </div>
     <ul class="nav navbar-nav">
       <% @project.chapters.each do |chapter| %>
-        <li><a href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
+        <li><a id="/chapters/<%=chapter.id%>" class="chapter-button" href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
         <% end %>
         <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project) %></li>
     </ul>
-    </div>
   </nav>
-<!--figure out where to put links -->
 
 
   <div class="row">
@@ -35,3 +33,6 @@
     </div>
   <% end %>
 </div>
+
+<%= render partial: 'characters', locals: {characters: @characters} %>
+

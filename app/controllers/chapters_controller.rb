@@ -13,7 +13,10 @@ class ChaptersController < ApplicationController
 
 		if @chapter == nil
 			redirect_to root_url
+		elsif request.xhr?
+			render '_chapter', layout: false, locals: {chapter: @chapter}
 		end
+
 	end
 
 	def edit
