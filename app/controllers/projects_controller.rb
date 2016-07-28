@@ -5,6 +5,9 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    if request.xhr?
+      render '_form', layout: false
+    end
   end
 
   def show
@@ -13,7 +16,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find_by_id params[:id]
-    
+
     if @project.user == @current_user
       render 'edit'
     else
