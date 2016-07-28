@@ -16,7 +16,7 @@
   </div>
 
   <div class="form-group plot-point-inline plot-point-form-input" id="plot-pt-txt">
-    <%= f.label :chapter, class: 'plot-form-txt' %><br>
+    <%= f.label :chapter, id: 'plot-form-txt' %><br>
     <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]}, class: "plot-point-form-control" )%>
   </div><br>
 

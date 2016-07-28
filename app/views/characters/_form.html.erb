@@ -17,8 +17,8 @@
       <%= f.text_field :description, class: 'form-control' %>
     </div>
 
-    <div class="col-md-10 form-group input-group">
-      <%= f.label :chapter %><br>
+    <div class="col-md-10 form-group input-group" id="char-pt-txt">
+      <%= f.label :chapter, id: "char-drop-label" %><br>
       <%= f.select("id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]}, class: 'dropdown-color')%>
     </div><br>
 
