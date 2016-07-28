@@ -45,3 +45,22 @@ a {
 .title {
   text-align: center;
 }
+
+.form-buttons {
+  position: relative;
+  right: -910px;
+  top: -40px;
+  border-color: #b61005;
+  color: #777;
+}
+
+.form-buttons:hover  {
+  color: white;
+  background-color: #b61005;
+}
+
+
+#copyright {
+  color: #777;
+  margin-top: 2%;
+}

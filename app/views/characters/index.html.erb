@@ -11,6 +11,28 @@
         <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project) %></li>
     </ul>
   </nav>
-<!--figure out where to put links -->
- <%= link_to 'Add a character', new_character_path(project: @project) if @creator %>
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class='section-title'>Characters</h1>
+      <%= link_to 'Add a Character', new_character_path(project: @project), class: 'btn btn-default btn-large form-buttons' %>
+    </div>
+  </div>
+
+  <% if @characters %>
+    <div class="row col-md-12 objects">
+      <% @characters.each do |character| %>
+        <div class="panel panel-default col-md-5 character-panel">
+          <div class="panel-body">
+            <h3><%= character.name %></h3>
+            <h5><%= character.description %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 <%= render partial: 'characters', locals: {characters: @characters} %>
+

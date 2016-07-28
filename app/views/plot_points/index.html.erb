@@ -12,6 +12,52 @@
     </ul>
   </nav>
 
-  <%= link_to 'Add a plot point', new_project_plot_point_path(project: @project) if @creator %>
+
+<h1 class='section-title'>Plot Points</h1>
+      <%= link_to 'Add a Plot Point', new_plot_point_path(project: @project), class: 'btn btn-default btn-large form-buttons'%>
+
+
+
+  <div id="project-plots">
+
+    <div id="main-plots-container">
+      <h3> Main Plots</h3>
+
+      <% if @main_plots %>
+        <div class="row col-md-12 objects">
+          <% @main_plots.each do |plot| %>
+            <div class="panel panel-default col-md-5 plot-panel">
+              <div class="panel-body">
+                <h4><%= plot.description %></h4>
+                <% if plot.chapter %>
+                  <h5><%= link_to plot.chapter.chapter_number, chapter_path(plot.chapter) %></h5>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="sub-plots-container">
+      <h3>Sub plots</h3>
+      <% if @subplots %>
+          <div class="row col-md-12 objects">
+            <% @subplots.each do |plot| %>
+              <div class="panel panel-default col-md-5 plot-panel">
+                <div class="panel-body">
+                  <h4><%= plot.description %></h4>
+                  <% if plot.chapter %>
+                    <h5><%= link_to plot.chapter.chapter_number, chapter_path(plot.chapter) %></h5>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
 <%= render partial: 'plot_points', locals: {main_plots: @main_plots, subplots: @subplots} %>
+
 </div>

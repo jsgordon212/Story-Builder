@@ -1,7 +1,7 @@
 <div class='container'>
 
-  <h1><%= @current_user.username %>'s projects</h1>
-  <%= link_to "Create New Project", new_project_path %>
+  <h1 class='section-title'><%= @current_user.username %>'s projects</h1>
+  <%= link_to "Create New Project", new_project_path, class: 'btn btn-defaul btn-large form-buttons' %>
 
     <div class="row col-md-12 objects">
       <% @current_user.projects.each do |project| %>
