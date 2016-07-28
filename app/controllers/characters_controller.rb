@@ -1,10 +1,16 @@
 class CharactersController < ApplicationController
   def index
     @characters = Character.where(project_id: params[:project_id])
+    @project = Project.find(params[:project_id])
+
+    if @project.user == current_user
+      @creator = true
+    else
+      @creator = false
+    end
   end
 
   def new
-
     @project = Project.find_by(id: params[:project])
     if @project.user == @current_user
       @character = Character.new
