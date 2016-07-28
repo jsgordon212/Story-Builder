@@ -21,9 +21,9 @@
       <% if @main_plots %>
         <div class="row col-md-12 objects">
           <% @main_plots.each do |plot| %>
-            <div class="panel panel-default col-md-5 object-panel">
+            <div class="panel panel-default col-md-5 plot-panel">
               <div class="panel-body">
-                <h3><%= plot.description %></h3>
+                <h4><%= plot.description %></h4>
                 <% if plot.chapter %>
                   <h5><%= link_to plot.chapter.chapter_number, chapter_path(plot.chapter) %></h5>
                 <% end %>
@@ -39,9 +39,9 @@
       <% if @subplots %>
           <div class="row col-md-12 objects">
             <% @subplots.each do |plot| %>
-              <div class="panel panel-default col-md-5 object-panel">
+              <div class="panel panel-default col-md-5 plot-panel">
                 <div class="panel-body">
-                  <h3><%= plot.description %></h3>
+                  <h4><%= plot.description %></h4>
                   <% if plot.chapter %>
                     <h5><%= link_to plot.chapter.chapter_number, chapter_path(plot.chapter) %></h5>
                   <% end %>
