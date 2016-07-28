@@ -1,5 +1,19 @@
 <div class= "container">
-  <div id="project-show-content" class= "col-md-12">
+
+  <nav class="navbar navbar-default" id="chapters-nav">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/projects/<%=@project.id%>"><%= @project.title %></a>
+      </div>
+    <ul class="nav navbar-nav">
+      <% @project.chapters.each do |chapter| %>
+        <li><a href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
+        <% end %>
+        <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project) %></li>
+    </ul>
+  </nav>
+
+  <div class= "show-content col-md-12">
     <% if @project %>
     <h1 class="title"><%= @project.title %></h1>
       <div class="container-fluid row">

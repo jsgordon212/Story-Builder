@@ -2,17 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#show-content {
+.show-content {
   width: 100%;
-  margin-top: 10%;
+  margin-top: 3%
 }
 
 .panel {
   border: solid black;
-}
-
-.sort-button {
-  color: #c16150;
 }
 
 .categories {
