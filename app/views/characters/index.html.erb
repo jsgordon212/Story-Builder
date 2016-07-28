@@ -1,35 +1,36 @@
 <div class='container'>
   <nav class="navbar navbar-default" id="chapters-nav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/projects/<%=@project.id%>"><%= @project.title %></a>
-    </div>
-  <ul class="nav navbar-nav">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/projects/<%=@project.id%>"><%= @project.title %></a>
+      </div>
+    <ul class="nav navbar-nav">
       <% @project.chapters.each do |chapter| %>
         <li><a href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
         <% end %>
         <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project) %></li>
     </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
+
+ <%= link_to 'Add a character', new_character_path(project: @project) if @creator %>
+
   <div class="row">
     <div class="col-xs-12">
-    <h1 class='section-title'>Characters</h1>
+      <h1 class='section-title'>Characters</h1>
+    </div>
   </div>
-</div>
-</div>
-<% if @characters %>
-  <div class="row col-md-12">
-  <% @characters.each do |char| %>
-<div class="panel panel-default col-md-4">
-  <div class="panel-body">
-    <h3><%= char.name %></h3>
-    <h5><%= char.description %></h5>
-  </div>
-</div>
+
+  <% if @characters %>
+    <div class="row col-md-12 objects">
+      <% @characters.each do |character| %>
+        <div class="panel panel-default col-md-5 object-panel">
+          <div class="panel-body">
+            <h3><%= character.name %></h3>
+            <h5><%= character.description %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-
-  <%= link_to 'Add a character', new_character_path(project: @project) if @creator %>
-
-<% end %>
 </div>

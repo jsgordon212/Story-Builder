@@ -1,14 +1,17 @@
 <div class='container'>
 
-<h1><%= @current_user.username %>'s projects</h1>
-<%= link_to "Create New Project", new_project_path %>
-<div id='show-content' class='col-md-12'>
-<ul>
-<% @current_user.projects.each do |project| %>
-  <li><%= link_to project.title, project_path(project) %></li>
-  <ul><li><%= project.summary %></li></ul>
-<% end %>
-</ul>
+  <h1><%= @current_user.username %>'s projects</h1>
+  <%= link_to "Create New Project", new_project_path %>
 
-</div>
+    <div class="row col-md-12 objects">
+      <% @current_user.projects.each do |project| %>
+        <div class="panel panel-default col-md-5 object-panel">
+          <div class="panel-body">
+            <h3><%= link_to project.title, project_path(project) %></h3>
+            <h5><%= project.summary %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
 </div>
