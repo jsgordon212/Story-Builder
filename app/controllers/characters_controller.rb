@@ -17,8 +17,12 @@ class CharactersController < ApplicationController
 
   def new
     @project = Project.find_by(id: params[:project_id])
-    if @project.user == @current_user
-      @character = Character.new
+    if @project
+      if @project.user == @current_user
+        @character = Character.new
+      else
+        redirect_to root_path
+      end
     else
       redirect_to root_path
     end
