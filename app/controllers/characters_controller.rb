@@ -20,6 +20,9 @@ class CharactersController < ApplicationController
     if @project
       if @project.user == @current_user
         @character = Character.new
+        if request.xhr?
+          render '_form', layout: false
+        end
       else
         redirect_to root_path
       end

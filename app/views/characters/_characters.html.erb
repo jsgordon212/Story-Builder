@@ -5,7 +5,7 @@
     </div>
   </div> -->
 <span class= "project-show-content">
-<%= link_to 'Add a Character', new_character_path(project_id: @project.id), class: 'btn btn-default btn-large form-buttons' %>
+<%= link_to 'Add a Character', new_character_path(project_id: @project.id), id: "/projects/#{@project.id}/characters/new", class: 'btn btn-default btn-large form-buttons form-button' %>
   <% if characters %>
     <div class="row col-md-12 objects">
       <% characters.each do |character| %>

@@ -45,6 +45,9 @@ class ChaptersController < ApplicationController
 		@project = Project.find_by(id: params[:project_id])
 		if @project.user == @current_user
 			@chapter = Chapter.new
+			if request.xhr?
+				render '_form', layout: false
+			end
 		else
 			redirect_to root_url
 		end

@@ -1,5 +1,5 @@
 <span class= "project-show-content">
-  <%= link_to 'Add a Plot Point', new_plot_point_path(project_id: @project), class: 'btn btn-default btn-large form-buttons'%>
+  <%= link_to 'Add a Plot Point', new_plot_point_path(project_id: @project), id:"#{@project.id}/plot_points/new", class: 'btn btn-default btn-large form-buttons form-button'%>
 
   <div id="project-plots">
     <div id="main-plots-container">

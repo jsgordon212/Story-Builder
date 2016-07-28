@@ -25,6 +25,9 @@ class PlotPointsController < ApplicationController
 				redirect_to @chapter
 			else
 				@plot_point = PlotPoint.new
+				if request.xhr?
+          render '_form', layout: false
+        end
 			end
 		else
 			redirect_to @chapter

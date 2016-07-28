@@ -1,25 +1,24 @@
+<div class="register-inner-container" id="new-project-form" class= 'form project-show-content'>
 
-    <div class="register-inner-container" id="new-project-form">
+  <div class="form-horizontal" >
+    <%= form_for @project do |f| %>
+      <%= render partial: 'shared/error_messages', locals: { object: @project } %>
 
-      <div class="form-horizontal" >
-        <%= form_for @project do |f| %>
-          <%= render partial: 'shared/error_messages', locals: { object: @project } %>
-
-        <div class="row-xs-3 form-group input-group">
-          <%= f.label :title %><br>
-          <%= f.text_field :title, class: 'form-control' %>
-        </div>
-
-        <div class="row-xs-3 form-group input-group">
-          <%= f.label :summary %><br>
-          <%= f.text_area :summary, cols: "34", rows: "10", class: 'form-control' %>
-        </div><br>
-
-        <%= hidden_field(:project, :user_id) %>
-
-        <%= f.submit "Submit", class: 'form-submit btn btn-default' %>
-
-        <% end %>
-      </div>
+    <div class="row-xs-3 form-group input-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
+
+    <div class="row-xs-3 form-group input-group">
+      <%= f.label :summary %><br>
+      <%= f.text_area :summary, cols: "34", rows: "10", class: 'form-control' %>
+    </div><br>
+
+    <%= hidden_field(:project, :user_id) %>
+
+    <%= f.submit "Submit", class: 'form-submit btn btn-default' %>
+
+    <% end %>
+  </div>
+</div>
 
