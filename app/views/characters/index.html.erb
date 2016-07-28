@@ -13,11 +13,12 @@
     </div>
   </nav>
 <!--figure out where to put links -->
- <%= link_to 'Add a character', new_character_path(project: @project) if @creator %>
+
 
   <div class="row">
     <div class="col-xs-12">
       <h1 class='section-title'>Characters</h1>
+      <%= link_to 'Add a Character', new_character_path(project: @project), class: 'btn btn-default btn-large form-buttons' %>
     </div>
   </div>
 
