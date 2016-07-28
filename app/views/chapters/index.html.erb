@@ -1,5 +1,5 @@
 <div class= "container">
-  <% if @chapters %>
+  <% if @chapters.empty? == false %> 
     <div class= "container">
   <nav class="navbar navbar-default" id="chapters-nav">
   <div class="container-fluid">
@@ -19,11 +19,10 @@
       <div class="container-fluid row">
           <div class="col-md-3">
             <div class="panel panel-default panel-body categories">
-              <h3 class = "#Characters"><a class = "sort-button developers" href= "#">    Characters</a></h3>
-              <h3 class ="#Plot Lines"><a class = "sort-button" href= "#">Plot Lines</a></h3>
+              <h3 class = "#Characters"><a class = "sort-button developers" href= "#"><%= link_to 'Characters', characters_path(:project_id => @project.id) %></a></h3> 
+              <h3 class ="#Plot Lines"><a class = "sort-button" href= "#"><%= link_to 'Plot Lines', plot_points_path(:project_id => @project.id) %></a></h3>
             </div>
         </div>
-
           <div id = "chapter-summary" class= "col-md-8">
             <div id="chapter-summary" class="panel panel-default">
               <div class="panel-body"><h4><%= @chapters.first.summary %></h4></div>

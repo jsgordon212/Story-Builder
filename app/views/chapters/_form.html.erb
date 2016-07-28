@@ -1,28 +1,31 @@
-
-	<%= render partial: 'shared/error_messages', locals: { object: @chapter } %>
-
-
+<div class="jumbotron">
+  <div class="container">
+    <div class="register-inner-container">
+<%= render partial: 'shared/error_messages', locals: { object: @chapter } %>
 
 <%= form_for ([@project, @chapter]) do |f| %>
 
 
-	<p>
+	<div class="row-xs-3 form-group input-group">
 		<%= f.label :chapter_number %>
-		<%= f.number_field :chapter_number %>
+		<%= f.number_field :chapter_number, class: 'form-control' %>
+	</div>
 
-	</p>
-	<p>
+	<div class="row-xs-3 form-group input-group">
 		<%= f.label :chapter_title %>
-		<%= f.text_field :chapter_title %>
-	</p>
-	<p>
+		<%= f.text_field :chapter_title, class: 'form-control' %>
+	</div>
+	
+	<div class="row-xs-3 form-group input-group">
 		<%= f.label :summary %>
-		<%= f.text_area :summary %>
-	</p>
+		<%= f.text_area :summary, class: 'form-control' %>
+	</div><br>
 
 	  <%= f.hidden_field :project_id, :value => @project.id %>
-	<p>
-		<%= f.submit "Submit" %>
-	</p>
+
+	<%= f.submit "Submit", class: 'btn btn-default' %>
 
 <% end %>
+</div>
+</div>
+</div>
