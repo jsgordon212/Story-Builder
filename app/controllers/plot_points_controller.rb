@@ -1,20 +1,21 @@
 class PlotPointsController < ApplicationController
 	def index
-		@project = Project.find_by_id params[:project_id]
 		if params[:project_id]
+			@project = Project.find_by(id: params[:project_id])
 			@plot_points = @project.plot_points
-
-			 @subplots = @plot_points.where(main_plot: false)
-			 @main_plots = @plot_points.where(main_plot: true)
-
-			 if @project.user == current_user
-			 	@creator = true
-			 else
-			 	@creator = false
-			 end
 		else
-			redirect_to root_url
+			@chapter = Chapter.find_by(id: params[:chapter_id])
+			@project = @chapter.project
+			@plot_points = @chapter.plot_points
 		end
+		@subplots = @plot_points.where(main_plot: false)
+		@main_plots = @plot_points.where(main_plot: true)
+
+		@project.user == current_user ? @creator = true : @creator = false
+		if request.xhr?
+      render '_plot_points', layout: false, locals: {main_plots: @main_plots, subplots: @subplots}
+		end
+
 	end
 
 	def new

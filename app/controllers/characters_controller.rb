@@ -1,12 +1,17 @@
 class CharactersController < ApplicationController
   def index
-    @characters = Character.where(project_id: params[:project_id])
-    @project = Project.find(params[:project_id])
+    if params[:project_id]
+      @characters = Character.where(project_id: params[:project_id])
+      @project = Project.find(params[:project_id])
 
-    if @project.user == current_user
-      @creator = true
+      @project.user == current_user ? @creator = true : @creator = false
     else
-      @creator = false
+      @chapter = Chapter.find_by(id: params[:chapter_id])
+      @project = @chapter.project
+      @characters = @chapter.characters
+    end
+    if request.xhr?
+      render '_characters', layout: false, locals: {characters: @characters}
     end
   end
 
