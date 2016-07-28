@@ -1,3 +1,17 @@
+<div class='container'>
+ <nav class="navbar navbar-default" id="chapters-nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/projects/<%=@project.id%>"><%= @project.title %></a>
+    </div>
+  <ul class="nav navbar-nav">
+      <% @project.chapters.each do |chapter| %>
+        <li><a href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
+        <% end %>
+        <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project) %></li>
+    </ul>
+  </div>
+</nav>
 <div id="project-plots">
   <div id="main-plots-container">
     <h3> Main Plots</h3>
@@ -25,4 +39,5 @@
       <% end %>
   </div>
   <%= link_to 'Add a plot point', new_plot_point_path(project: @project) if @creator %>
+</div>
 </div>
