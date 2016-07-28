@@ -1,5 +1,5 @@
 <div class= "container">
-  <% if @chapters %>
+  <% if @chapters.empty? == false %>
     <div class= "container">
   <nav class="navbar navbar-default" id="chapters-nav">
   <div class="container-fluid">
@@ -23,7 +23,6 @@
               <h3 class ="#Plot Lines"><a class = "sort-button" href= "#">Plot Lines</a></h3>
             </div>
         </div>
-
           <div id = "chapter-summary" class= "col-md-8">
             <div id="chapter-summary" class="panel panel-default">
               <div class="panel-body"><h4><%= @chapters.first.summary %></h4></div>
