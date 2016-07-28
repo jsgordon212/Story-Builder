@@ -4,27 +4,25 @@
 
 <%= render partial: 'shared/error_messages', locals: { object: @plot_point } %>
 
-<%= form_for @plot_point, :html => {:class => 'chapter-form'} do |f| %>
-
-  <div class="row-xs-3 form-group input-group">
-  	<%= f.label :main_plot %>
-  	<%= f.check_box :main_plot, class: 'form-control' %>
+<%= form_for @plot_point, :html => {:class => 'form-inline'} do |f| %>
+  <div class="form-group input-group plot-point-inline plot-point-form-input">
+  	<%= f.label :main_plot, class: 'plot-form-txt' %>
+  	<%= f.check_box :main_plot, class: 'form-control plot-point-form-control' %>
   </div>
 
-  <div class="row-xs-3 form-group input-group">
-  	<%= f.label :text %>
-  	<%= f.text_area :description, class: 'form-control' %>
+  <div class="form-group plot-point-inline plot-point-form-input">
+  	<%= f.label :text, class: 'plot-form-txt' %>
+  	<%= f.text_area :description, class: 'form-control plot-point-form-control' %>
   </div>
 
-  <div class="row-xs-3 form-group input-group">
-    <%= f.label :chapter %><br>
-    <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]} )%>
+  <div class="form-group plot-point-inline plot-point-form-input">
+    <%= f.label :chapter, class: 'plot-form-txt' %><br>
+    <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]}, class: "plot-point-form-control" )%>
   </div><br>
 
     <%= f.hidden_field :project_id, :value => @project.id %>
 
-  	<%= f.submit "Submit", class: 'btn btn-default' %>
-
+  	<%= f.submit "Submit", class: 'btn btn-default', id: 'plot-btn' %>
 <% end %>
 </div>
 </div>
