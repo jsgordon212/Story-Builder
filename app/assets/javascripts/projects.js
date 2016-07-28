@@ -23,7 +23,8 @@ $(document).ready(function(){
   $.ajax({
       url: url
     }).done(function(response){
-      $('.show-content').replaceWith(response)
+      $('.project-show-content').replaceWith(response)
     })
   })
+
 });

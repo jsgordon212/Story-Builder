@@ -1,6 +1,5 @@
-<div class="jumbotron">
-  <div class="container">
-    <div class="register-inner-container new-project-form">
+
+    <div class="register-inner-container" id="new-project-form">
 
       <div class="form-horizontal" >
         <%= form_for @project do |f| %>
@@ -18,10 +17,9 @@
 
         <%= hidden_field(:project, :user_id) %>
 
-        <%= f.submit "Submit", class: 'btn btn-default' %>
+        <%= f.submit "Submit", class: 'form-submit btn btn-default' %>
 
         <% end %>
       </div>
     </div>
-  </div>
-</div>
+
