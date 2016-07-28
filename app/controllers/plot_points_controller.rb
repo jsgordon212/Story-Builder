@@ -19,15 +19,15 @@ class PlotPointsController < ApplicationController
 	end
 
 	def new
-		@project = Project.find_by_id params[:project]
+		@project = Project.find_by(id: params[:project_id])
 		if @project
-			if @project.user = @current_user
-				@plot_point = PlotPoint.new
-			else
+			if @project.user != @current_user
 				redirect_to @chapter
+			else
+				@plot_point = PlotPoint.new
 			end
 		else
-			redirect_to root_url
+			redirect_to @chapter
 		end
 	end
 

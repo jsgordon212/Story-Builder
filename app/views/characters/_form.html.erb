@@ -19,7 +19,7 @@
 
     <div class="col-md-10 form-group input-group">
       <%= f.label :chapter %><br>
-      <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]}, class: 'dropdown-color')%>
+      <%= f.select("id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]}, class: 'dropdown-color')%>
     </div><br>
 
       <%= f.hidden_field :project_id, :value => @project.id %>
