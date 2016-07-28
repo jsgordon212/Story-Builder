@@ -3,29 +3,30 @@
     <div class="register-inner-container">
 
 <%= render partial: 'shared/error_messages', locals: { object: @character } %>
+<div class="form-horizontal" >
+  <%= form_for @character, :html => {:class => 'chapter-form'} do |f| %>
 
-<%= form_for @character, :html => {:class => 'chapter-form'} do |f| %>
+    <div class="col-md-10 form-group input-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-  <div class="row-xs-3 form-group input-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
+    <div class="col-md-10 form-group input-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+    </div>
 
-  <div class="row-xs-3 form-group input-group">
-    <%= f.label :description %>
-    <%= f.text_field :description, class: 'form-control' %>
-  </div>
+    <div class="col-md-10 form-group input-group">
+      <%= f.label :chapter %><br>
+      <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]}, class: 'dropdown-color')%>
+    </div><br>
 
-  <div class="row-xs-3 form-group input-group">
-    <%= f.label :chapter %><br>
-    <%= f.select("chapter_id", @project.chapters.map { |chapter| [chapter.chapter_number,chapter.id ]})%>
-  </div><br>
+      <%= f.hidden_field :project_id, :value => @project.id %>
 
-    <%= f.hidden_field :project_id, :value => @project.id %>
+      <%= f.submit "Submit", class: 'btn btn-default' %>
 
-    <%= f.submit "Submit", class: 'btn btn-default' %>
-
-<% end %>
+  <% end %>
+</div>
 </div>
 </div>
 </div>
