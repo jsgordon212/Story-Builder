@@ -24,4 +24,5 @@
       	<% end %></ul>
       <% end %>
   </div>
+  <%= link_to 'Add a plot point', new_plot_point_path(project: @project) if @creator %>
 </div>

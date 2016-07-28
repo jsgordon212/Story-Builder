@@ -6,4 +6,5 @@
       	<li><%= char.description %></li>
       </ul>
   <% end %></ul>
+  <%= link_to 'Add a character', new_character_path(project: @project) if @creator %>
 <% end %>

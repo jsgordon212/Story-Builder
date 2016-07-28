@@ -1,18 +1,32 @@
 class PlotPointsController < ApplicationController
 	def index
 		@project = Project.find_by_id params[:project_id]
-		@plot_points = @project.plot_points
+		if params[:project_id]
+			@plot_points = @project.plot_points
 
-		 @subplots = @plot_points.where(main_plot: false)
-		 @main_plots = @plot_points.where(main_plot: true)
+			 @subplots = @plot_points.where(main_plot: false)
+			 @main_plots = @plot_points.where(main_plot: true)
+
+			 if @project.user == current_user
+			 	@creator = true
+			 else
+			 	@creator = false
+			 end
+		else
+			redirect_to root_url
+		end
 	end
 
 	def new
 		@project = Project.find_by_id params[:project]
-		if @project.user = @current_user
-			@plot_point = PlotPoint.new
+		if @project
+			if @project.user = @current_user
+				@plot_point = PlotPoint.new
+			else
+				redirect_to @chapter
+			end
 		else
-			redirect_to @chapter
+			redirect_to root_url
 		end
 	end
 
