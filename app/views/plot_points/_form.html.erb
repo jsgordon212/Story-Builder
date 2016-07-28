@@ -4,7 +4,7 @@
 
 <%= render partial: 'shared/error_messages', locals: { object: @plot_point } %>
 
-<%= form_for @plot_point, :html => {:class => 'form-inline'} do |f| %>
+<%= form_for [@project, @plot_point], :html => {:class => 'form-inline'} do |f| %>
   <div class="form-group input-group plot-point-inline plot-point-form-input">
   	<%= f.label :main_plot, class: 'plot-form-txt' %>
   	<%= f.check_box :main_plot, class: 'form-control plot-point-form-control' %>

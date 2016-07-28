@@ -17,4 +17,13 @@ $(document).ready(function(){
       $('.show-content').replaceWith(response)
     })
   })
+  $('.form-button').on('click', function(e){
+  e.preventDefault();
+  var url = this.id
+  $.ajax({
+      url: url
+    }).done(function(response){
+      $('.show-content').replaceWith(response)
+    })
+  })
 });
