@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     resources :plot_points
   end
 
+  resources :characters
+
 
 end
