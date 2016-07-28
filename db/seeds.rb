@@ -37,4 +37,22 @@ end
 end
 # Chapter.all.sample.charaters << Character.all.sample
 
+good_user = User.create(username: "jsgordon212", email: "jsgordon@jared.com", password: "Password1")
 
+good_user_projects = []
+
+4.times do
+	good_user_projects << Project.create(title: Faker::Hipster.sentence, user: good_user, summary: Faker::Hipster.paragraph([3..9].sample, true))
+end 
+
+16.times do
+	Character.create(project: good_user_projects.sample, name: Faker::Name.name, description: Faker::Hipster.sentence)
+end
+
+30.times do
+	Chapter.create(project: good_user_projects.sample, chapter_number: rand(1..17), chapter_title: Faker::Hipster.sentence, summary: Faker::Hipster.paragraph([2..8].sample, true))
+end
+
+47.times do
+	PlotPoint.create(main_plot: [true, false].sample, project: good_user_projects.sample, description: Faker::Hipster.paragraph([2..8].sample, true))
+end
