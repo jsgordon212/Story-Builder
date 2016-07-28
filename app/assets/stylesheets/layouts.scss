@@ -63,6 +63,19 @@ a {
   background-color: #b61005;
 }
 
+.project-button {
+  position: relative;
+  right: -890px;
+  top: -40px;
+  border-color: #b61005;
+  color: #777;
+}
+
+.project-button:hover {
+  color: white;
+  background-color: #b61005;
+}
+
 #copyright {
   color: #777;
   margin-top: 2%;

@@ -4,8 +4,8 @@
       <h1 class='section-title'>Characters</h1>
     </div>
   </div> -->
+<span class= "project-show-content">
 <%= link_to 'Add a Character', new_character_path(project: @project), class: 'btn btn-default btn-large form-buttons' %>
-
   <% if characters %>
     <div class="row col-md-12 objects">
       <% characters.each do |character| %>
@@ -20,3 +20,4 @@
   <% end %>
 </div>
 </div>
+</span>
