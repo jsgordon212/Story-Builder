@@ -1,7 +1,8 @@
-<h1><%= @current_user.username %>'s profile</h1>
+<div class='container'>
 
-<h3>Current Projects</h3>
-
+<h1><%= @current_user.username %>'s projects</h1>
+<%= link_to "Create New Project", new_project_path %>
+<div id='show-content' class='col-md-12'>
 <ul>
 <% @current_user.projects.each do |project| %>
   <li><%= link_to project.title, project_path(project) %></li>
@@ -9,4 +10,5 @@
 <% end %>
 </ul>
 
-<%= link_to "Create New Project", new_project_path %>
+</div>
+</div>
