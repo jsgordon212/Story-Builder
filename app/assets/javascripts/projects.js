@@ -17,7 +17,7 @@ $(document).ready(function(){
       $('.show-content').replaceWith(response)
     })
   })
-  $('.form-button').on('click', function(e){
+  $('.container').on('click', '.form-button', function(e){
   e.preventDefault();
   var url = this.id
   $.ajax({
@@ -26,5 +26,4 @@ $(document).ready(function(){
       $('.project-show-content').replaceWith(response)
     })
   })
-
 });

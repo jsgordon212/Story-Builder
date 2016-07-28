@@ -1,6 +1,4 @@
-<div class="jumbotron">
-  <div class="container">
-    <div class="register-inner-container">
+<div class="register-inner-container project-show-content">
 <%= render partial: 'shared/error_messages', locals: { object: @chapter } %>
 
 <div class="form-horizontal" >
@@ -15,7 +13,7 @@
 			<%= f.label :chapter_title %>
 			<%= f.text_field :chapter_title, class: 'form-control' %>
 		</div>
-		
+
 		<div class="col-md-10 form-group input-group">
 			<%= f.label :summary %>
 			<%= f.text_area :summary, class: 'form-control' %>
@@ -28,5 +26,4 @@
 	<% end %>
 </div>
 </div>
-</div>
-</div>
+

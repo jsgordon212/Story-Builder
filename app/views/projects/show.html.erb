@@ -9,7 +9,7 @@
       <% @project.chapters.each do |chapter| %>
         <li><a class="chapter-button" id="/chapters/<%=chapter.id%>" href="/chapters/<%=chapter.id%>">Chapter <%= chapter.chapter_number %></a></li>
         <% end %>
-        <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project) %></li>
+        <li id="add-chapter"><%= link_to 'Add Chapter', new_project_chapter_path(@project), id: "/projects/#{@project.id}/chapters/new", class: "form-button" %></li>
     </ul>
   </nav>
 
