@@ -1,4 +1,3 @@
-
 good_user = User.create(username: "jsgordon212", email: "jsgordon@jared.com", password: "Password1")
 
 Project.create(title: "The Lost Boy", user: good_user, summary: "A story of a boy who is looking for meaning in life.")
